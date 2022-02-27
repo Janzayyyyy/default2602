@@ -36,9 +36,9 @@ def index():
         elif pred[0] == 1:
             default = " (Will default)"
         s = "The predicted default score is " + str(pred[0]) + str(default)
-        return(render_template("index.html", result="The predicted default score is "))
+        return(render_template("index.html", result=s))
     else:
-        return(render_template("index.html", result="2"))
+        return(render_template("index.html", result="The predicted default score is "))
 
 
 # In[ ]:
