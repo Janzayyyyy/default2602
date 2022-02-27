@@ -31,8 +31,12 @@ def index():
         Loan = (float(Loan) - 5591.68)/ 3174.97
         model = joblib.load("Default")
         pred = model.predict([[float(Income), float(Age), float(Loan)]])
-        s = "The predicted default score is " + str(pred[0])
-        return(render_template("index.html", result=s))
+        if pred[0] == 0:
+            default = " (No default)"
+        elif pred[0] == 1:
+            default = " (Will default)"
+        s = "The predicted default score is " + str(pred[0]) + str(default)
+        return(render_template("index.html", result="The predicted default score is "))
     else:
         return(render_template("index.html", result="2"))
 
